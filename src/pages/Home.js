@@ -4,6 +4,10 @@ import ProducItem from '../components/ProducItem';
 import { addProducts } from '../redux/products/actions';
 
 const Home = () => {
+
+    const hello = [1, 2, 3, 4,]
+    const ok = hello + ""
+    console.log(ok)
     const [id, setId] = useState(-1)
     const allProducts = useSelector((state) => state.products)
     const dispatch = useDispatch()

@@ -1,27 +1,29 @@
 import React from 'react';
+import { FaPlus, FaMinus } from "react-icons/fa";
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
+
     return (
         <div className="cartCard">
             <div className="flex items-center col-span-6 space-x-6">
 
-                <img className="lws-cartImage" src="https://i.dummyjson.com/data/products/40/thumbnail.jpg" alt="product" />
+                <img className="lws-cartImage" src={item.image} alt="product" />
 
                 <div className="space-y-2">
-                    <h4 className="lws-cartName">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptop</h4>
-                    <p className="lws-cartCategory">Men's clothing</p>
-                    <p>BDT <span className="lws-cartPrice">1100</span></p>
+                    <h4 className="lws-cartName">{item.productName}</h4>
+                    <p className="lws-cartCategory">{item.category}</p>
+                    <p>BDT <span className="lws-cartPrice">{item.price}</span></p>
                 </div>
             </div>
             <div className="flex items-center justify-center col-span-4 mt-4 space-x-8 md:mt-0">
 
                 <div className="flex items-center space-x-4">
                     <button className="lws-incrementQuantity">
-                        <i className="text-lg fa-solid fa-plus"></i>
+                        <FaPlus />
                     </button>
-                    <span className="lws-cartQuantity">2</span>
+                    <span className="lws-cartQuantity">{item.cartQuantity}</span>
                     <button className="lws-decrementQuantity">
-                        <i className="text-lg fa-solid fa-minus"></i>
+                        <FaMinus />
                     </button>
                 </div>
 
