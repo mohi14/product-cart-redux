@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/carts/actions';
+import { reduceQuantity } from '../redux/products/actions';
 
 const ProducItem = ({ product }) => {
     const dispatch = useDispatch()
@@ -8,6 +9,7 @@ const ProducItem = ({ product }) => {
     const handleAddToCart = (id, value) => {
         const newValue = { ...value, cartQuantity: 1 }
         dispatch(addToCart(id, newValue))
+        dispatch(reduceQuantity(id))
         // console.log(id, value)
     }
     return (
@@ -20,7 +22,7 @@ const ProducItem = ({ product }) => {
                     <p className="productPrice">BDT <span className="lws-price">{product.price}</span></p>
                     <p className="productQuantity">QTY <span className="lws-quantity">{product.quantity}</span></p>
                 </div>
-                <button className="lws-btnAddToCart" onClick={() => handleAddToCart(product.id, product)}>Add To Cart</button>
+                <button disabled={product.quantity === 0} className="lws-btnAddToCart" onClick={() => handleAddToCart(product.id, product)}>Add To Cart</button>
             </div>
         </div>
     );
